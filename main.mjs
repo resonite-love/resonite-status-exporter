@@ -186,18 +186,12 @@ resonite_away_users ${data.awayUsers}
 # HELP resonite_instance_count resonite instance_count value
 # TYPE resonite_instance_count gauge
 resonite_instance_count ${data.instanceCount}
-# HELP resonite_vr_users resonite vr_users value
-# TYPE resonite_vr_users gauge
-resonite_vr_users ${data.vrUsers}
-# HELP resonite_screen_users resonite screen_users value
-# TYPE resonite_screen_users gauge
-resonite_screen_users ${data.screenUsers}
-# HELP resonite_desktop_users resonite desktop_users value
-# TYPE resonite_desktop_users gauge
-resonite_desktop_users ${data.desktopUsers}
-# HELP resonite_mobile_users resonite mobile_users value
-# TYPE resonite_mobile_users gauge
-resonite_mobile_users ${data.mobileUsers}
+# HELP resonite_users resonite users value
+# TYPE resonite_users gauge
+resonite_users{type="VR"} ${data.vrUsers}
+resonite_users{type="Screen"} ${data.screenUsers}
+resonite_users{type="Desktop"} ${data.desktopUsers}
+resonite_users{type="Mobile"} ${data.mobileUsers}
 # HELP resonite_visible_public_session_users resonite visible_public_session_users value
 # TYPE resonite_visible_public_session_users gauge
 resonite_visible_public_session_users ${data.visiblePublicSessionUsers}
