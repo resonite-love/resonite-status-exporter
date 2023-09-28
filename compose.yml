@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  app:
+    restart: always
+    build: .
+    ports:
+      - "4404:3000"
