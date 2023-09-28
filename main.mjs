@@ -72,7 +72,12 @@ const getStatus = async () => {
               }
             }
          */
-        const json = await fetch(API_ENDPOINT).then(res => res.json())
+        const res = await fetch(API_ENDPOINT)
+        if(!res.ok) {
+            console.log("get err")
+            return null
+        }
+        const json = await res.json()
         return formatData(json || {})
     } catch {
         console.error("err")
@@ -221,7 +226,9 @@ resonite_users_by_client_type{type="Headless"} ${data.usersByClientType.Headless
 // キャッシュ更新
 const updateData = async () => {
     const data = await getStatus()
+    if(!data) return
     cache = makeGaugeText(data)
+    console.log("update")
 }
 
 // 初回取得
